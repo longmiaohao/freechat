@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="/static/js/mui.min.js"></script>
+    <link href="/static/css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<h1 class="mui-title">用户登陆</h1>
+	</header>
+	<div class="mui-content" style="margin-top: 50px;">
+		<div class="mui-row mui-text-center" style="margin-bottom: 20px;">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png" width="100px" height="100px"  onerror="this.src='https://img.favpng.com/7/5/8/computer-icons-font-awesome-user-font-png-favpng-YMnbqNubA7zBmfa13MK8WdWs8.jpg'" style="border: 1px solid white; border-radius: 100px;"/>
+		    <p class="mui-text-center" style="color: red">{{ error_message }}</p>
+        </div>
+		<div class="mui-row">
+			<div class="mui-card" id="login">
+				<form class="mui-input-group" method="post" id="user_login">
+					{% csrf_token %}
+                    <div class="mui-input-row">
+						<label>账号</label>
+						<input value="{{ username }}" type="text" class="mui-input-clear" id="username" name="username" placeholder="请输入账号">
+					</div>
+					<div class="mui-input-row">
+						<label>密码</label>
+						<input type="password" class="mui-input-password" id="password" name="password"  placeholder="请输入密码" onkeydown="KeyDown('user_login')"/>
+					</div>
+					<div class="mui-input-row mui-checkbox mui-left">
+						<label>自动登陆</label>
+						<input name="auto_login" type="checkbox" checked>
+					</div>
+					<div class="mui-input-row mui-checkbox mui-left">
+						<label>记住密码</label>
+						<input name="sava_passwd" type="checkbox" checked>
+					</div>
+				</form>
+			</div>
+			<div class="mui-button-row mui-col-xs-10 mui-col-xs-10"  style="padding-left: calc(20%);">
+				<button onclick="login_check('user_login')" type="submit" class="mui-btn mui-btn-primary mui-btn-block" data-loading-text="登陆中...">登陆</button>
+			</div>
+			<div class="mui-row mui-col-xs-12">
+				<div  class="mui-text-center">
+					<a href="#">忘记密码</a> | <a href="#">注册用户</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	function login_check(val){
+		var check = true;
+		mui("#login input").each(function() {
+				//若当前input为空，则alert提醒 
+						if(!this.value || this.value.trim() == "") {
+							var label = this.previousElementSibling;
+							mui.alert(label.innerText + "不允许为空");
+							check = false;
+							return false;
+						}
+			}); //校验通过，继续执行业务逻辑 
+	if (check) {
+        document.getElementById(val).submit();
+    }
+	}
+	function KeyDown(val)
+    {
+      if (event.keyCode === 13)
+      {
+        login_check(val);
+      }
+    }
+</script>

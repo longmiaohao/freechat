@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="922f2f0a-0428-485c-afad-af0e66e100db" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="freechat" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="freechat" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="freechat" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="ProjectId" id="1X74nReTFa8tOULuTDXZLX8TnMU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="sqlite" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\django工程\freechat\static\js" />
+      <recent name="E:\django工程\freechat\templates\chat" />
+      <recent name="E:\django工程\freechat" />
+      <recent name="E:\django工程\freechat\static\fonts" />
+      <recent name="E:\django工程\freechat\templates\index" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\django工程\freechat\static\css" />
+      <recent name="E:\django工程\freechat\static\js" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django server.freechat">
+    <configuration name="ws" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="freechat" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="freechat.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ws.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="freechat" type="Python.DjangoServer" factoryName="Django server">
+      <module name="freechat" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="freechat.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="127.0.0.1" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Django server.freechat" />
+      <item itemvalue="Python.ws" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.ws" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="922f2f0a-0428-485c-afad-af0e66e100db" name="Default Changelist" comment="" />
+      <created>1580383965628</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580383965628</updated>
+      <workItem from="1580383968632" duration="312000" />
+      <workItem from="1580384315956" duration="21000" />
+      <workItem from="1580384363655" duration="1359000" />
+      <workItem from="1580385965768" duration="40000" />
+      <workItem from="1580386027432" duration="9334000" />
+      <workItem from="1580995006267" duration="146000" />
+      <workItem from="1580995357174" duration="4542000" />
+      <workItem from="1581054397694" duration="7014000" />
+      <workItem from="1581062628025" duration="369000" />
+      <workItem from="1581064491221" duration="14270000" />
+      <workItem from="1581080450012" duration="1436000" />
+      <workItem from="1581162785275" duration="3453000" />
+      <workItem from="1581169153064" duration="15654000" />
+      <workItem from="1581233343094" duration="20511000" />
+      <workItem from="1581509107215" duration="1090000" />
+      <workItem from="1581511045387" duration="51000" />
+      <workItem from="1581511263174" duration="456000" />
+      <workItem from="1581511878210" duration="52000" />
+      <workItem from="1581521093913" duration="1688000" />
+      <workItem from="1581744260473" duration="610000" />
+      <workItem from="1582185218319" duration="2134000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="560" y="177" key="#Notifications" timestamp="1581522162455">
+      <screen x="0" y="23" width="1920" height="982" />
+    </state>
+    <state x="560" y="177" key="#Notifications/0.23.1920.982@0.23.1920.982" timestamp="1581522162455" />
+    <state x="424" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581523245998">
+      <screen x="0" y="23" width="1920" height="982" />
+    </state>
+    <state x="424" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1920.977@0.23.1920.977" timestamp="1581509284203" />
+    <state x="424" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1920.982@0.23.1920.982" timestamp="1581523245998" />
+    <state x="748" y="274" key="FileChooserDialogImpl" timestamp="1581511346546">
+      <screen x="0" y="23" width="1920" height="982" />
+    </state>
+    <state x="748" y="274" key="FileChooserDialogImpl/0.23.1920.982@0.23.1920.982" timestamp="1581511346546" />
+    <state width="918" height="111" key="GridCell.Tab.0.bottom" timestamp="1582188359936">
+      <screen x="0" y="22" width="960" height="518" />
+    </state>
+    <state width="918" height="111" key="GridCell.Tab.0.bottom/0.22.960.518@0.22.960.518" timestamp="1582188359936" />
+    <state width="1878" height="263" key="GridCell.Tab.0.bottom/0.23.1920.982@0.23.1920.982" timestamp="1581523253549" />
+    <state width="918" height="111" key="GridCell.Tab.0.center" timestamp="1582188359935">
+      <screen x="0" y="22" width="960" height="518" />
+    </state>
+    <state width="918" height="111" key="GridCell.Tab.0.center/0.22.960.518@0.22.960.518" timestamp="1582188359935" />
+    <state width="1878" height="263" key="GridCell.Tab.0.center/0.23.1920.982@0.23.1920.982" timestamp="1581523253548" />
+    <state width="918" height="111" key="GridCell.Tab.0.left" timestamp="1582188359935">
+      <screen x="0" y="22" width="960" height="518" />
+    </state>
+    <state width="918" height="111" key="GridCell.Tab.0.left/0.22.960.518@0.22.960.518" timestamp="1582188359935" />
+    <state width="1878" height="263" key="GridCell.Tab.0.left/0.23.1920.982@0.23.1920.982" timestamp="1581523253547" />
+    <state width="918" height="111" key="GridCell.Tab.0.right" timestamp="1582188359936">
+      <screen x="0" y="22" width="960" height="518" />
+    </state>
+    <state width="918" height="111" key="GridCell.Tab.0.right/0.22.960.518@0.22.960.518" timestamp="1582188359936" />
+    <state width="1878" height="263" key="GridCell.Tab.0.right/0.23.1920.982@0.23.1920.982" timestamp="1581523253548" />
+    <state x="0" y="22" key="SettingsEditor" timestamp="1582187678566">
+      <screen x="0" y="22" width="960" height="518" />
+    </state>
+    <state x="0" y="22" key="SettingsEditor/0.22.960.518@0.22.960.518" timestamp="1582187678566" />
+    <state x="469" y="150" key="SettingsEditor/0.23.1920.977@0.23.1920.977" timestamp="1581509853933" />
+    <state x="471" y="57" key="SettingsEditor/0.23.1920.982@0.23.1920.982" timestamp="1581522989901" />
+    <state x="449" y="253" key="com.intellij.ide.util.TipDialog" timestamp="1582185224744">
+      <screen x="0" y="23" width="1280" height="697" />
+    </state>
+    <state x="449" y="228" key="com.intellij.ide.util.TipDialog/0.23.1280.622@0.23.1280.622" timestamp="1581745381556" />
+    <state x="449" y="253" key="com.intellij.ide.util.TipDialog/0.23.1280.697@0.23.1280.697" timestamp="1582185224744" />
+    <state x="616" y="346" key="com.intellij.ide.util.TipDialog/0.23.1920.977@0.23.1920.977" timestamp="1581509260695" />
+    <state x="673" y="347" key="com.intellij.ide.util.TipDialog/0.23.1920.982@0.23.1920.982" timestamp="1581521554748" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/freechat$ws.coverage" NAME="ws Coverage Results" MODIFIED="1581522778332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

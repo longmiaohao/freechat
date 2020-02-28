@@ -1,0 +1,287 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="/static/css/mui.css" rel="stylesheet" />
+		<script src="/static/js/mui.js"></script>
+		<style type="text/css">
+			.message-brief {
+				padding-left: 50px;
+				max-width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.rt-ready{
+				position: absolute;
+				left: 70px;
+				bottom: 25px;
+				color: red;
+			}
+			.rt-finish{
+				position: absolute;
+				left: 70px;
+				bottom: 35px;
+				color: green;
+			}
+			li>div>button{
+				position: absolute;
+				right: 5px;
+				top: 25px;
+			}
+			.main_contain{
+				height: calc(100vh - 50px); 
+				overflow-y: auto;
+			}
+			.online{
+				color: green;
+				font-style: italic;
+			}
+			.offline{
+				opacity: 0.5;
+			}
+            li{
+                cursor: pointer;
+            }
+		</style>
+	</head>
+	<body class="mui-content">
+        <nav class="mui-bar mui-bar-tab" id="nav">
+                    <a class="mui-tab-item" href="#tabbar-with-chat" onclick="set_title(this, 'chat')">
+                        <span class="mui-icon mui-icon-email"><span class="mui-badge">1</span></span>
+                        <span class="mui-tab-label">消息</span>
+                    </a>
+                    <a class="mui-tab-item" href="#tabbar-with-contact" onclick="set_title(this, 'contact')">
+                        <span class="mui-icon mui-icon-contact"></span>
+                        <span class="mui-tab-label">通讯录</span>
+                    </a>
+                    <a class="mui-tab-item" href="#tabbar-with-map" onclick="set_title(this, 'settings')">
+                        <span class="mui-icon mui-icon-gear"></span>
+                        <span class="mui-tab-label">设置</span>
+                    </a>
+                </nav>
+        <!-- 侧滑导航根容器 -->
+        <div class="mui-off-canvas-wrap mui-draggable">
+              <!-- 菜单容器 -->
+              <aside class="mui-off-canvas-left">
+                <div class="mui-scroll-wrapper">
+                  <div class="mui-scroll">
+                    <!-- 菜单具体展示内容 -->
+                    <div class="mui-row mui-text-center" style="margin-top: 20px; margin-bottom: 20px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png" width="100px" height="100px"  onerror="this.src='https://img.favpng.com/7/5/8/computer-icons-font-awesome-user-font-png-favpng-YMnbqNubA7zBmfa13MK8WdWs8.jpg'" style="border: 1px solid white; border-radius: 100px;"/>
+                    </div>
+                    <div class="mui-text-center">
+                        <p>龙秒浩</p>
+                        <div class="mui-button-row">
+                            <button class="mui-btn-blue" type="button">修改密码</button>
+                            <button class="mui-btn-blue" type="button" id="logout" onclick="logout()">注销</button>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+              <!-- 主页面容器 -->
+              <div class="mui-inner-wrap">
+                <!-- 主页面标题 -->
+                <header class="mui-bar mui-bar-nav">
+                  <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+                  <h1 class="mui-title" id="title">消息</h1>
+                </header>
+                <div class="mui-content mui-scroll-wrapper">
+                  <div class="mui-scroll">
+                      <div class="mui-input-row mui-search">
+                          <input type="search" class="mui-input-clear" placeholder="搜索联系人">
+                      </div>
+                    <!-- 主界面具体展示内容 -->
+                    <div class="mui-row main_contain" id="content">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+	</body>
+</html>
+<script type="text/javascript">
+    var base_url = "http://192.168.1.11";
+    mui.init({
+        swipeBack:false,
+        gestureConfig: {
+            tap: true, //默认为true
+            doubletap: false, //默认为false
+            longtap: false, //默认为false
+            swipe: true, //默认为true
+            drag: true, //默认为true
+            hold: false,//默认为false，不监听
+            release: false//默认为false，不监听
+        },
+        pullRefresh : {
+        container:"content",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+        down : {
+          style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+          color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+          height:'50px',//可选,默认50px.下拉刷新控件的高度,
+          range:'100px', //可选 默认100px,控件可下拉拖拽的范围
+          offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
+          auto: true,//可选,默认false.首次加载自动上拉刷新一次
+          callback :function () {
+              alert("ok");
+          } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+        }
+      }
+    });
+    {#mui.plusReady(#}
+    {#    mui('.mui-content').on('tap','a',function(){#}
+    {#        window.top.location.href=this.href;#}
+    {#    })#}
+    {#);#}
+    mui.plusReady(
+        mui("#contact").on('tap', 'li', function(){
+            alert("ok");
+    })
+    );
+
+    function logout(){
+        mui.openWindow({
+                url: base_url + "/logout?username" + this.id,
+                id: this.id,
+                show: {
+                    autoShow: true, //页面loaded事件发生后自动显示，默认为true
+                    aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+                    duration: 200 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+                },
+                waiting: {
+                    autoShow: true, //自动显示等待框，默认为true
+                    title: '正在加载...', //等待对话框上显示的提示内容
+                }
+            });
+    }
+
+	window.onload = function () {
+	        document.getElementById("content").innerHTML = chat();
+            setlistener();
+    };
+
+    function setlistener() {
+        var li = document.getElementsByTagName("li");
+        for (var i = 0; i < li.length; i++) {
+            li[i].addEventListener("tap", chat_page, false);
+        }
+    }
+
+    function chat(){
+		var chats = '<li class="mui-table-view-cell mui-transitioning" id="'+ 'username' + '">\
+						<div class="mui-slider-right mui-disabled">\
+							<a class="mui-btn mui-btn-red" style="transform: translate(0px, 0px);">删除</a>\
+						</div>\
+						<div class="mui-slider-handle mui-table" style="transform: translate(0px, 0px);">\
+							<div class="mui-table-cell">\
+									<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png" width="50px" height="50px"  onerror="this.src=\'https://img.favpng.com/7/5/8/computer-icons-font-awesome-user-font-png-favpng-YMnbqNubA7zBmfa13MK8WdWs8.jpg\'" style="border: 1px solid white;"/>\
+									<span style="position: relative;bottom: 30px;"><em>司徒马朗</em></span>\
+									<span style="position: relative;bottom: 30px; padding-left: calc(6%); opacity: 0.5;">01-25 23:37</span>\
+									<span class="rt-ready">未读</span>\
+									<p class="message-brief">你吃饭了吗</p>\
+							</div>\
+						</div>\
+					</li>';
+		return '<ul class="mui-table-view">' + chats + '</ul>';
+	}
+	
+	function contact(){
+        var contacts = "";
+        mui.getJSON(base_url + '/contact?username={{ username }}',function(data){
+            if (data.length === 0){
+                 contacts = '<li class="mui-table-view-cell online">\
+							    <p class="mui-text-center">暂无好友</p>\
+						    </li>';
+                 document.getElementById('contact').innerHTML = contacts;
+            }
+            data.forEach(function (val) {
+                if (val.status == '1') {
+                    contacts += '<li class="mui-table-view-cell mui-transitioning" id="'+ val.username + '">\
+						<div class="mui-slider-right mui-disabled">\
+							<a class="mui-btn mui-btn-red" style="transform: translate(0px, 0px);">删除</a>\
+						</div>\
+						<div class="mui-slider-handle mui-table" style="transform: translate(0px, 0px);">\
+                            <div class="mui-table-cell online">\
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png" width="50px" height="50px"  onerror="this.src=\'https://img.favpng.com/7/5/8/computer-icons-font-awesome-user-font-png-favpng-YMnbqNubA7zBmfa13MK8WdWs8.jpg\'" style="border: 1px solid white;border-radius: 100px;"/>\
+                                <span style="position: absolute;bottom: 15px;"><em>' + val.username + '</em></span>\
+                                <span style="position: absolute;bottom: 35px;right:20px"><em>' + val.status_time + '</em></span>\
+                                <span style="position: absolute;bottom: 35px;">在线</span>\
+                            </div>\
+						</div>\
+					</li>';
+                    document.getElementById('contact').innerHTML = contacts;
+                }
+                else {
+                    contacts += '<li class="mui-table-view-cell mui-transitioning" id="'+ val.username + '">\
+						<div class="mui-slider-right mui-disabled">\
+							<a class="mui-btn mui-btn-red" style="transform: translate(0px, 0px);">删除</a>\
+						</div>\
+						<div class="mui-slider-handle mui-table" style="transform: translate(0px, 0px);">\
+                            <div class="mui-table-cell offline">\
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png" width="50px" height="50px"  onerror="this.src=\'https://img.favpng.com/7/5/8/computer-icons-font-awesome-user-font-png-favpng-YMnbqNubA7zBmfa13MK8WdWs8.jpg\'" style="border: 1px solid white;border-radius: 100px;"/>\
+                                <span style="position: absolute;bottom: 15px;"><em>'+ val.username + '</em></span>\
+                                <span style="position: absolute;bottom: 35px; right:20px"><em>'+ val.status_time + '</em></span>\
+                                <span style="position: absolute;bottom: 35px;">离线</span>\
+                            </div>\
+						</div>\
+					</li>';
+                     document.getElementById('contact').innerHTML = contacts;
+                }
+            });
+            setlistener();
+            }
+        );
+	}
+	
+	function set_title(obj, item){
+		const text = obj.innerText.split('\n');
+		document.getElementById("title").innerHTML = text[1]?text[1]:text[0];
+		if (item === "chat") {
+            document.getElementById("content").innerHTML = chat();
+            setlistener();
+        }
+		else if (item === "contact") {
+            document.getElementById("content").innerHTML = '<ul class="mui-table-view" id="contact"></ul>';
+            contact();
+		}
+    }
+
+	function chat_page() {
+	    //mui.getJSON("http://192.168.0.102:80/chat?username=" + this.id, function () {
+
+        //});
+        mui('.mui-content').on('tap','li',function(){
+            mui.openWindow({
+                url: base_url + "/chat?username=" + this.id,
+                id: this.id,
+            {#    styles: {#}
+            {#        top: newpage - top - position, //新页面顶部位置#}
+            {#        bottom: newage - bottom - position, //新页面底部位置#}
+            {#        width: newpage - width, //新页面宽度，默认为100%#}
+            {#        height: newpage - height, //新页面高度，默认为100%#}
+            {#        ......#}
+            {#    },#}
+{#                extras: {#}
+{#                    ..... //自定义扩展参数，可以用来处理页面间传值#}
+{#                }#}
+                show: {
+                    autoShow: true, //页面loaded事件发生后自动显示，默认为true
+            {#        aniShow: slide-in-right, //页面显示动画，默认为”slide-in-right“；#}
+                    duration: 200 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+                },
+                waiting: {
+                    autoShow: true, //自动显示等待框，默认为true
+                    title: '正在加载...', //等待对话框上显示的提示内容
+            {#        options: {#}
+            {#            width: waiting - dialog - widht, //等待框背景区域宽度，默认根据内容自动计算合适宽度#}
+            {#            height: waiting - dialog - height, //等待框背景区域高度，默认根据内容自动计算合适高度#}
+            {#        }#}
+                }
+            });
+        });
+    }
+</script>

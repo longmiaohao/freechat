@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="/static/css/mui.css" rel="stylesheet" />
+		<script src="/static/js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<style type="text/css">
+			#chat>div{
+				border-bottom: 1px solid grey;
+			}
+		</style>
+	</head>
+	<body>
+			<div class="mui-table-view-cell mui-media  mui-text-center">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png" width="50px" height="50px"  onerror="this.src='https://img.favpng.com/7/5/8/computer-icons-font-awesome-user-font-png-favpng-YMnbqNubA7zBmfa13MK8WdWs8.jpg'" style="border: 1px solid white; border-radius: 100px; margin-bottom: 5px;"/>
+					<p style="color: #008000; text-align: center"><em id="receiver">{{ username }}</em></p>
+			</div>
+			
+		    <div id="chat" style="height: calc(65vh); overflow-y: auto; margin-left: 5px; padding: 10px">
+            {% for var in data %}
+                {% if var.type == 1 %}
+                    <div>
+						<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png" width="50px" height="50px"  onerror="this.src='https://img.favpng.com/7/5/8/computer-icons-font-awesome-user-font-png-favpng-YMnbqNubA7zBmfa13MK8WdWs8.jpg'" style="border: 1px solid white; border-radius: 100px; margin-bottom: 10px;"/>
+                        <span style="position: relative; top: -20px; opacity: 0.3;">{{var.time}}</span>
+						<span style="position: relative;bottom: 20px; line-height: 30px;">{{ var.content }}</span>
+                    </div>
+                {% else %}
+					<div>
+						<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png" width="50px" height="50px"  style="position: relative; left: calc(100% - 50px) ; border: 1px solid white; border-radius: 100px; margin-bottom: 10px;"/>
+                        <span style="float: right;position: relative; line-height: 30px; right: 55px; bottom: -18px">{{var.content}}</span>
+                        <span style="float: right;position: relative; opacity: 0.3; right: 60px; bottom: -23px">{{var.time}}</span>
+					</div>
+                {% endif %}
+            {% endfor %}
+		    </div>
+
+			<div style="height:70%; position: fixed; width: 100%;" class="mui-text-center">
+                <div class="mui-row">
+				<textarea id="content" style="height: 80px; margin-bottom: 0px; border: 1px solid black" onkeydown="KeyDown()"></textarea>
+                </div>
+                <div class="mui-button-row">
+					<button class="mui-btn-mini mui-btn-green" onclick="send()" >发送</button>
+				</div>
+			</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+function Base64() {
+    // private property
+    _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+    // public method for encoding
+    this.encode = function (input) {
+        var output = "";
+        var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+        var i = 0;
+        input = _utf8_encode(input);
+        while (i < input.length) {
+            chr1 = input.charCodeAt(i++);
+            chr2 = input.charCodeAt(i++);
+            chr3 = input.charCodeAt(i++);
+            enc1 = chr1 >> 2;
+            enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+            enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+            enc4 = chr3 & 63;
+            if (isNaN(chr2)) {
+                enc3 = enc4 = 64;
+            } else if (isNaN(chr3)) {
+                enc4 = 64;
+            }
+            output = output +
+            _keyStr.charAt(enc1) + _keyStr.charAt(enc2) +
+            _keyStr.charAt(enc3) + _keyStr.charAt(enc4);
+        }
+        return output;
+    }
+
+    // public method for decoding
+    this.decode = function (input) {
+        var output = "";
+        var chr1, chr2, chr3;
+        var enc1, enc2, enc3, enc4;
+        var i = 0;
+        input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+        while (i < input.length) {
+            enc1 = _keyStr.indexOf(input.charAt(i++));
+            enc2 = _keyStr.indexOf(input.charAt(i++));
+            enc3 = _keyStr.indexOf(input.charAt(i++));
+            enc4 = _keyStr.indexOf(input.charAt(i++));
+            chr1 = (enc1 << 2) | (enc2 >> 4);
+            chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+            chr3 = ((enc3 & 3) << 6) | enc4;
+            output = output + String.fromCharCode(chr1);
+            if (enc3 != 64) {
+                output = output + String.fromCharCode(chr2);
+            }
+            if (enc4 != 64) {
+                output = output + String.fromCharCode(chr3);
+            }
+        }
+        output = _utf8_decode(output);
+        return output;
+    }
+
+    // private method for UTF-8 encoding
+    _utf8_encode = function (string) {
+        string = string.replace(/\r\n/g,"\n");
+        var utftext = "";
+        for (var n = 0; n < string.length; n++) {
+            var c = string.charCodeAt(n);
+            if (c < 128) {
+                utftext += String.fromCharCode(c);
+            } else if((c > 127) && (c < 2048)) {
+                utftext += String.fromCharCode((c >> 6) | 192);
+                utftext += String.fromCharCode((c & 63) | 128);
+            } else {
+                utftext += String.fromCharCode((c >> 12) | 224);
+                utftext += String.fromCharCode(((c >> 6) & 63) | 128);
+                utftext += String.fromCharCode((c & 63) | 128);
+            }
+
+        }
+        return utftext;
+    }
+
+    // private method for UTF-8 decoding
+    _utf8_decode = function (utftext) {
+        var string = "";
+        var i = 0;
+        var c = c1 = c2 = 0;
+        while ( i < utftext.length ) {
+            c = utftext.charCodeAt(i);
+            if (c < 128) {
+                string += String.fromCharCode(c);
+                i++;
+            } else if((c > 191) && (c < 224)) {
+                c2 = utftext.charCodeAt(i+1);
+                string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+                i += 2;
+            } else {
+                c2 = utftext.charCodeAt(i+1);
+                c3 = utftext.charCodeAt(i+2);
+                string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+                i += 3;
+            }
+        }
+        return string;
+    }
+}
+</script>
+<script type="text/javascript">
+function WebSocketTest()
+     {
+        if ("WebSocket" in window)
+        {
+           // 打开一个 web socket
+           ws = new WebSocket("ws://192.168.1.11:4200");
+           ws.onopen = function()
+           {
+                var sender = "{{ request.COOKIES.username }}";
+                var receiver = document.getElementById('receiver').innerText;
+                ws.send(base64.encode('{"sender":"' + sender + '", "receiver":"' + receiver + '"}'));
+           };
+
+           ws.onmessage = function (evt)
+           {
+                var received_msg = JSON.parse(evt.data);
+                if (received_msg[0].status === '01'){
+                    var div = document.getElementById("chat").appendChild(document.createElement("div"));
+                    var content = document.getElementById('content');
+                    div.innerHTML = '<div>\n' +
+                    '<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png" width="50px" height="50px"  style="position: relative; left: calc(100% - 50px) ; border: 1px solid white; border-radius: 100px; margin-bottom: 10px;"/>\n' +
+                    '<span style="float: right;position: relative; line-height: 30px; right: 55px; bottom: -18px">' + content.value + '</span>\n' +
+                    '<span style="float: right;position: relative; opacity: 0.3; right: 60px; bottom: -23px">' + received_msg[0].time + '</span>\n' +
+                    '</div>';
+                    content.value = "";
+                }
+                else {
+                    for (var i = 0; i < received_msg.length; i++){
+                        var div = document.getElementById("chat").appendChild(document.createElement("div"));
+                        var content = document.getElementById('content');
+                        div.innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Wikipedia_User-ICON_byNightsight.png" width="50px" height="50px"  onerror="this.src=\'https://img.favpng.com/7/5/8/computer-icons-font-awesome-user-font-png-favpng-YMnbqNubA7zBmfa13MK8WdWs8.jpg\'" style="border: 1px solid white; border-radius: 100px; margin-bottom: 10px;"/>\n' +
+                            '<span style="position: relative; top: -20px; opacity: 0.3;">'+ received_msg[i].time +'</span>\n' +
+                            '<span style="position: relative;bottom: 20px; line-height: 30px;">'+ base64.decode(received_msg[i].content) +'</span>'
+                    }
+                }
+                resize();
+           };
+
+           ws.onclose = function()
+           {
+              // 关闭 websocket
+              {#alert("您已掉线，请重新打开该页面");#}
+              WebSocketTest();
+           };
+        }
+        else
+        {
+           // 浏览器不支持 WebSocket
+           alert("您的浏览器不支持 WebSocket!");
+        }
+     }
+    var ws = "";
+    function resize(){
+        var div = document.getElementById("chat");
+        div.scrollTop = div.scrollHeight;//这里是关键的实现
+    }
+    window.onload = function (){
+            resize();
+            WebSocketTest();
+    };
+	var base64 = new Base64();
+	function send() {
+        var content = document.getElementById('content').value;
+        if (!content)
+            return;
+	    var receiver = document.getElementById('receiver').innerText;
+	    var sender = "{{ request.COOKIES.username }}";
+        ws.send(base64.encode('{"sender":"' + sender + '","receiver":"' +  receiver + '","content":"' + content.replace(/\"/g, '\\"') + '"}'));
+    }
+
+function KeyDown()
+    {
+      if (event.keyCode === 13)
+      {
+        send();
+      }
+    }
+
+    window.onunload = function () {
+        alert("关闭页面");
+    }
+</script>
